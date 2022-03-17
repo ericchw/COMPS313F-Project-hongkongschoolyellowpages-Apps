@@ -1,69 +1,64 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="app.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        #myInput {
-            background-image: url('/css/searchicon.png');
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            width: 100%;
-            font-size: 16px;
-            padding: 12px 20px 12px 40px;
-            border: 1px solid #ddd;
-            margin-bottom: 12px;
-        }
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      background-position: 10px 12px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
 
-        #myTable {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #ddd;
-            font-size: 18px;
-        }
+    #myUL {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        #myTable th,
-        #myTable td {
-            text-align: left;
-            padding: 12px;
-        }
+    #myUL li a {
+      border: 1px solid #ddd;
+      margin-top: -1px;
+      /* Prevent double borders */
+      background-color: #f6f6f6;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block
+    }
 
-        #myTable tr {
-            border-bottom: 1px solid #ddd;
-        }
-
-        #myTable tr.header,
-        #myTable tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
+    #myUL li a:hover:not(.header) {
+      background-color: #eee;
+    }
+  </style>
+  <title>JavaScript - read JSON from URL</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="app.js"></script>
 </head>
 
 <body>
-
-    <h2>My Customers</h2>
-
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
-    <table id="myTable">
-
-        <tr>
-
-        </tr>
-
+  <div class=search>  <p>Search inventory name:
+    <label for="bar"><span class="glyphicon glyphicon-search"></span></label><input style="width: 100%; font-size: 30px; 
+    height: 5%;"  type="text" id="myInput" placeholder="Search name:" name="bar" ><br></p>
+</div>
+<div >
+    <table id="myTable" class='myFormat' >
+        <tr></tr>
     </table>
-
-    <script>
         
-    </script>
+</div> 
 
-</body>
+<iframe width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+    src=https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=22.36346934,114.12295048&z=16&output=embed&t=></iframe>
 
-</html>
+
+</body></html>
