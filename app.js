@@ -43,21 +43,21 @@ function myTable() {
     var table = document.getElementById("myTable");
 
     // Create an empty <tr> element and add it to the 1st position of the table:
+    detail.reverse();
     for (var i = 0; i < detail.length; i++) {
         var a;
         a = table.insertRow(0).insertCell(0)
-        a.innerHTML = detail[i].attributes.ENGLISH_NAME;
+        a.innerHTML = detail[i].attributes.OBJECTID + ": " + detail[i].attributes.ENGLISH_NAME;
         a.setAttribute("onclick", "show(" + i + ");");
     }
 }
 //pass value
 function show(no) {
     window.location.href = "show.html";
-    //school name
-    var schoolname = detail[no].attributes.ENGLISH_NAME;
-    sessionStorage.setItem("schoolName", schoolname);
     //school no
     var schoolno = detail[no].attributes.SCHOOL_NO_;
     sessionStorage.setItem("schoolNo", schoolno);
-
+    //school name
+    var schoolname = detail[no].attributes.ENGLISH_NAME;
+    sessionStorage.setItem("schoolName", schoolname);
 }
