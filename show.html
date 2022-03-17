@@ -9,83 +9,85 @@
 </head>
 
 <body>
-School object ID: <span id="schoolObjectId"></span><br>
-School no: <span id="schoolNo"></span><br>
-School category: <span id="schoolCategory"></span><br>
-中文類別: <span id="schoolCategory-zh"></span><br>
-School name: <span id="schoolName"></span><br>
-學校名稱: <span id="schoolName-zh"></span><br>
-Students gender: <span id="studentGender"></span><br>
-就讀學生性別: <span id="studentGender-zh"></span><br>
-School session: <span id="schoolSession"></span><br>
-學校授課時間: <span id="schoolSession-zh"></span><田br>
-District: <span id="district"></span><br>
-分區: <span id="district-zh"></span><br>
-Finance type: <span id="financeType"></span><br>
-資助種類: <span id="financeType-zh"></span><br>
-School level: <span id="schoolLevel"></span><br>
-學校類型: <span id="schoolLevel-zh"></span><br>
-School telephone: <span id="schoolTelphone"></span><br>
-聯絡電話: <span id="schoolTelphone-zh"></span><br>
-Fax number: <span id="schoolFax"></span><br>
-傳真號碼: <span id="schoolFax-zh"></span><br>
-Website: <span id="schoolWebsite"></span><br>
-網頁: <span id="schoolWebsite-zh"></span><br>
-Religon: <span id="schoolReligon"></span><br>
-宗教: <span id="schoolReligon-zh"></span><br>
-<iframe id ="myFrame" width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
-  
+  School object ID: <span id="schoolObjectId"></span><br>
+  School no: <span id="schoolNo"></span><br>
+  School category: <span id="schoolCategory"></span><br>
+  中文類別: <span id="schoolCategory-zh"></span><br>
+  School name: <span id="schoolName"></span><br>
+  學校名稱: <span id="schoolName-zh"></span><br>
+  Students gender: <span id="studentGender"></span><br>
+  就讀學生性別: <span id="studentGender-zh"></span><br>
+  School session: <span id="schoolSession"></span><br>
+  學校授課時間: <span id="schoolSession-zh"></span><田br>
+  District: <span id="district"></span><br>
+  分區: <span id="district-zh"></span><br>
+  Finance type: <span id="financeType"></span><br>
+  資助種類: <span id="financeType-zh"></span><br>
+  School level: <span id="schoolLevel"></span><br>
+  學校類型: <span id="schoolLevel-zh"></span><br>
+  School telephone: <span id="schoolTelphone"></span><br>
+  聯絡電話: <span id="schoolTelphone-zh"></span><br>
+  Fax number: <span id="schoolFax"></span><br>
+  傳真號碼: <span id="schoolFax-zh"></span><br>
+  Website: <span id="schoolWebsite"></span><br>
+  網頁: <span id="schoolWebsite-zh"></span><br>
+  Religon: <span id="schoolReligon"></span><br>
+  宗教: <span id="schoolReligon-zh"></span><br>
+  <iframe id ="myFrame" width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
 </body>
+
 <script>
-    //get value
-    var detail;
+  //get value
+  var detail;
 
-var url = 'https://services3.arcgis.com/6j1KwZfY2fZrfNMR/arcgis/rest/services/Hong_Kong_School_Location_and_Information/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'
-$.getJSON(url, function (data) {
+  var url = 'https://services3.arcgis.com/6j1KwZfY2fZrfNMR/arcgis/rest/services/Hong_Kong_School_Location_and_Information/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'
+  $.getJSON(url, function (data) {
     detail = data.features;
-
      run();
-});
-function run(){
-  var no = sessionStorage.getItem("schoolNo");
-  console.log(no);
-  var numb= getID(no);
-  rename();
-}
-function getID(no){
-  for (var i = 0; i < detail.length; i++) {
-        if(no == detail[i].attributes.SCHOOL_NO_){
-            numb=i
-        }
     }
-}
-function rename(){
-    document.getElementById("schoolObjectId").innerHTML = detail[numb].attributes.OBJECTID;
-    document.getElementById("schoolNo").innerHTML = detail[numb].attributes.SCHOOL_NO_;
-    document.getElementById("schoolCategory").innerHTML = detail[numb].attributes.ENGLISH_CATEGORY;
-    document.getElementById("schoolCategory-zh").innerHTML = detail[numb].attributes.中文類別;
-    document.getElementById("schoolName").innerHTML = detail[numb].attributes.ENGLISH_NAME;
-    document.getElementById("schoolName-zh").innerHTML = detail[numb].attributes.中文名稱;
-    document.getElementById("studentGender").innerHTML = detail[numb].attributes.STUDENTS_GENDER;
-    document.getElementById("studentGender-zh").innerHTML = detail[numb].attributes.就讀學生性別;
-    document.getElementById("schoolSession").innerHTML = detail[numb].attributes.SESSION;
-    document.getElementById("schoolSession-zh").innerHTML = detail[numb].attributes.學校授課時間;
-    document.getElementById("district").innerHTML = detail[numb].attributes.DISTRICT;
-    document.getElementById("district-zh").innerHTML = detail[numb].attributes.分區;
-    document.getElementById("financeType").innerHTML = detail[numb].attributes.FINANCE_TYPE;
-    document.getElementById("financeType-zh").innerHTML = detail[numb].attributes.資助種類;
-    document.getElementById("schoolLevel").innerHTML = detail[numb].attributes.SCHOOL_LEVEL;
-    document.getElementById("schoolLevel-zh").innerHTML = detail[numb].attributes.學校類型;
-    document.getElementById("schoolTelphone").innerHTML = detail[numb].attributes.TELEPHONE;
-    document.getElementById("schoolTelphone-zh").innerHTML = detail[numb].attributes.聯絡電話;
-    document.getElementById("schoolFax").innerHTML = detail[numb].attributes.FAX_NUMBER;
-    document.getElementById("schoolFax-zh").innerHTML = detail[numb].attributes.傳真號碼;
-    document.getElementById("schoolWebsite").innerHTML = detail[numb].attributes.WEBSITE;
-    document.getElementById("schoolWebsite-zh").innerHTML = detail[numb].attributes.網頁;
-    document.getElementById("schoolReligon").innerHTML = detail[numb].attributes.RELIGION;
-    document.getElementById("schoolReligon-zh").innerHTML = detail[numb].attributes.宗教;
-    document.getElementById("myFrame").src= "https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q="+detail[numb].attributes.LATITUDE+","+detail[numb].attributes.LONGITUDE+"&z=16&output=embed&t=>"
-}    
-    
-</script>
+  );
+
+  function run(){
+    var no = sessionStorage.getItem("schoolNo");
+    console.log(no);
+    var numb= getID(no);
+    rename();
+  }
+
+  function getID(no){
+    for (var i = 0; i < detail.length; i++) {
+      if(no == detail[i].attributes.SCHOOL_NO_){
+        numb=i
+      }
+    }
+  }
+
+  function rename(){
+      document.getElementById("schoolObjectId").innerHTML = detail[numb].attributes.OBJECTID;
+      document.getElementById("schoolNo").innerHTML = detail[numb].attributes.SCHOOL_NO_;
+      document.getElementById("schoolCategory").innerHTML = detail[numb].attributes.ENGLISH_CATEGORY;
+      document.getElementById("schoolCategory-zh").innerHTML = detail[numb].attributes.中文類別;
+      document.getElementById("schoolName").innerHTML = detail[numb].attributes.ENGLISH_NAME;
+      document.getElementById("schoolName-zh").innerHTML = detail[numb].attributes.中文名稱;
+      document.getElementById("studentGender").innerHTML = detail[numb].attributes.STUDENTS_GENDER;
+      document.getElementById("studentGender-zh").innerHTML = detail[numb].attributes.就讀學生性別;
+      document.getElementById("schoolSession").innerHTML = detail[numb].attributes.SESSION;
+      document.getElementById("schoolSession-zh").innerHTML = detail[numb].attributes.學校授課時間;
+      document.getElementById("district").innerHTML = detail[numb].attributes.DISTRICT;
+      document.getElementById("district-zh").innerHTML = detail[numb].attributes.分區;
+      document.getElementById("financeType").innerHTML = detail[numb].attributes.FINANCE_TYPE;
+      document.getElementById("financeType-zh").innerHTML = detail[numb].attributes.資助種類;
+      document.getElementById("schoolLevel").innerHTML = detail[numb].attributes.SCHOOL_LEVEL;
+      document.getElementById("schoolLevel-zh").innerHTML = detail[numb].attributes.學校類型;
+      document.getElementById("schoolTelphone").innerHTML = detail[numb].attributes.TELEPHONE;
+      document.getElementById("schoolTelphone-zh").innerHTML = detail[numb].attributes.聯絡電話;
+      document.getElementById("schoolFax").innerHTML = detail[numb].attributes.FAX_NUMBER;
+      document.getElementById("schoolFax-zh").innerHTML = detail[numb].attributes.傳真號碼;
+      document.getElementById("schoolWebsite").innerHTML = detail[numb].attributes.WEBSITE;
+      document.getElementById("schoolWebsite-zh").innerHTML = detail[numb].attributes.網頁;
+      document.getElementById("schoolReligon").innerHTML = detail[numb].attributes.RELIGION;
+      document.getElementById("schoolReligon-zh").innerHTML = detail[numb].attributes.宗教;
+      document.getElementById("myFrame").src= "https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q="+detail[numb].attributes.LATITUDE+","+detail[numb].attributes.LONGITUDE+"&z=16&output=embed&t=>"
+  }    
+  </script>
 </html>

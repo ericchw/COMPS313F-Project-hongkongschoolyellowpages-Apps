@@ -13,10 +13,9 @@ $.getJSON(url, function (data) {
     var path = window.location.pathname;
     var page = path.split("/").pop();
     myTable();
-    
+    }
+);
 
-
-});
 function myFunction() {
     var input, filter, found, table, tr, td, i, j;
     input = document.getElementById("myInput");
@@ -38,6 +37,7 @@ function myFunction() {
         }
     }
 }
+
 // Find a <table> element with id="myTable":
 function myTable() {
     var table = document.getElementById("myTable");
