@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript - read JSON from URL</title>
+  <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+School name:<span id="SchoolName"></span>
+
+  <script>
+    var schoolname = sessionStorage.getItem("schoolName");
+    console.log(schoolname);
+    document.getElementById("SchoolName").innerHTML = schoolname;
+  </script>
+</body>
+
+</html>
