@@ -1,8 +1,33 @@
 {
     "@@locale": "en",
     
-    "home": "Home",
+    "hongKongSchoolYellowPages": "Hong Kong School Yellow Pages",
     "loading": "Loading...",
+    "home": "Home",
+    "search": "Search",
+    "language": "Language",
+    "call": "Call",
     "open": "Open",
-    "hongKongSchoolYellowPages": "Hong Kong School Yellow Pages"
+    "openLink": "Open website",
+    "openMap": "Open map",
+
+    "details": "Details",
+    "id": "ID: ",
+    "no": "No.: ",
+    "category": "Catergory: ",
+    "name": "Name",
+    "address": "Address: ",
+    "studentGender": "Student gender: ",
+    "session": "Session: ",
+    "district": "District: ",
+    "financeType": "Finance type: ",
+    "level": "Level: ",
+    "telephone": "Telephone: ",
+    "faxNumber": "Fax number: ",
+    "website": "Website: ",
+    "religon": "Religon: ",
+    "longitude": "Longitude",
+    "laitude": "Laitude",
+    "easting": "Easting",
+    "northing": "Northing"
 }

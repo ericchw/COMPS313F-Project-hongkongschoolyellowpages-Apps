@@ -16,7 +16,7 @@ class L10n {
       case 'en':
         return 'English';
       default:
-        return 'English';
+        return '中文';
     }
   }
 }

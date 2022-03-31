@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hongkongschoolyellowpages/l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hongkongschoolyellowpages/screens/home.dart';
 import 'package:hongkongschoolyellowpages/screens/languageSetting.dart';
 import 'package:hongkongschoolyellowpages/screens/details.dart';
-import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:hongkongschoolyellowpages/l10n/l10n.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-//import everyScreen for Nagvation
 
 void main() {
   runApp(MyApp());
 }
+
+//import everyScreen for Nagvation
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           final provider = Provider.of<LocaleProvider>(context);
           return new MaterialApp(
             localizationsDelegates: [
-              //AppLocalizations.delegate,
+              AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
