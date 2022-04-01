@@ -55,9 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
-    String language = prefs.getString('language') ?? null!;
-    print("getLanguage: " + language);
-    switch (language) {
+    String _language = prefs.getString('language') ?? null!;
+    print("getLanguage: " + _language);
+    switch (_language) {
       case "en":
         _isEn = true;
         print("getLanguage: bool en");
@@ -117,6 +117,8 @@ class _HomeScreenState extends State<HomeScreen> {
         onRefresh: _refresh,
         child: Card(
           child: ListView.builder(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
             itemCount: _schoolInfoList!.length,
             itemBuilder: (context, index) {
               return _isEn
@@ -165,9 +167,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           "Details",
                           arguments: {
                             'index': _schoolInfoList![index],
-                            "_isEn": _isEn
+                            "isEn": _isEn,
                           },
                         );
+                        print(_isEn);
                       },
                     );
             },

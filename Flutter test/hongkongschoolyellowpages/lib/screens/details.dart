@@ -22,8 +22,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
     // _getSchoolInfoByIndex(0);
   }
 
-  Map<String, dynamic>? attributes = {};
-  bool? _isEn;
+  Future<Null> _refresh() async {
+    initState();
+    return;
+  }
+
+  Map<String, dynamic>? _attributes = {};
   // Map<dynamic, dynamic>? _schoolInfo = {};
   // Future<void> _getSchoolInfoByIndex(int id) async {
   //   _schoolInfo = await SchoolInfoApi().getSchoolInfoByIndex(id);
@@ -34,77 +38,228 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     final args = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    _isEn = args['isEn'];
-    attributes = args['index']['attributes'];
+    bool _isEn = args['isEn'] ?? true;
+    _attributes = args['index']['attributes'];
+    // bool _isEn = args['isEn'];
+    // if (_isEn == true) {
+    //   print("2nd is en");
+    // } else {
+    //   print("2nd not en");
+    // }
 
     //print(attributes);
     //print(attributes!['OBJECTID']);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        leading: BackButton(
+          color: Colors.black,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Colors.yellow,
         title: Text(
-          AppLocalizations.of(context)!.hongKongSchoolYellowPages,
+          AppLocalizations.of(context)!.details,
           style:
               const TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
         ),
       ),
-      body: GestureDetector(
+      body: RefreshIndicator(
+        onRefresh: _refresh,
+        // child: Card(
+        //   child: ListView.builder(
+        //     shrinkWrap: true,
+        //     physics: ScrollPhysics(),
+        //     itemCount: _attributes!.length,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       String key = _attributes!.keys.elementAt(index);
+        //       return new Column(
+        //         children: <Widget>[
+        //           new ListTile(
+        //             title: new Text("$key"),
+        //             subtitle: new Text("${_attributes![key]}"),
+        //           ),
+        //           new Divider(
+        //             height: 2.0,
+        //           ),
+        //         ],
+        //       );
+        //     },
+        //   ),
+        // ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(AppLocalizations.of(context)!.id +
-                attributes!['OBJECTID'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.no +
-                attributes!['SCHOOL_NO_'].toString()),
-            const SizedBox(height: 10),
-            Text("中文類別: " + attributes!['中文類別'].toString()),
-            const SizedBox(height: 10),
-            Text("中文名稱: " + attributes!['中文名稱'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.address +
-                attributes!['中文地址'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.studentGender +
-                attributes!['就讀學生性別'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.session +
-                attributes!['學校授課時間'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.district +
-                attributes!['分區'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.financeType +
-                attributes!['資助種類'].toString()),
-            const SizedBox(height: 10),
-            Row(children: <Widget>[
-              Text(AppLocalizations.of(context)!.telephone +
-                  attributes!['聯絡電話'].toString() +
-                  " "),
-              ElevatedButton(
-                child: Text(AppLocalizations.of(context)!.call),
-                onPressed: () async {
-                  FlutterPhoneDirectCaller.callNumber(
-                          attributes!['聯絡電話'].toString())
-                      .toString();
-                },
-              ),
-            ]),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.faxNumber +
-                attributes!['傳真號碼'].toString()),
-            const SizedBox(height: 10),
-            Text(AppLocalizations.of(context)!.religon +
-                attributes!['宗教'].toString()),
-            const SizedBox(height: 10),
-            Row(
+            Flex(
+              direction: Axis.horizontal,
               children: <Widget>[
-                Text(AppLocalizations.of(context)!.website),
+                _isEn
+                    ? Text(
+                        AppLocalizations.of(context)!.id +
+                            _attributes!['OBJECTID'].toString(),
+                      )
+                    : Text(
+                        AppLocalizations.of(context)!.id +
+                            _attributes!['OBJECTID'].toString(),
+                      ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.no +
+                        _attributes!['SCHOOL_NO_'].toString())
+                    : Text(AppLocalizations.of(context)!.no +
+                        _attributes!['SCHOOL_NO_'].toString())
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.category +
+                        _attributes!['ENGLISH_CATEGORY'].toString())
+                    : Text(AppLocalizations.of(context)!.category +
+                        _attributes!['中文類別'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.name +
+                        _attributes!['ENGLISH_NAME'].toString())
+                    : Text(AppLocalizations.of(context)!.name +
+                        _attributes!['中文名稱'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.address +
+                        _attributes!['ENGLISH_ADDRESS'].toString())
+                    : Text(AppLocalizations.of(context)!.address +
+                        _attributes!['中文地址'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.studentGender +
+                        _attributes!['STUDENTS_GENDER'].toString())
+                    : Text(AppLocalizations.of(context)!.studentGender +
+                        _attributes!['就讀學生性別'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.session +
+                        _attributes!['SESSION'].toString())
+                    : Text(AppLocalizations.of(context)!.session +
+                        _attributes!['學校授課時間'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.district +
+                        _attributes!['DISTRICT'].toString())
+                    : Text(AppLocalizations.of(context)!.district +
+                        _attributes!['分區'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.financeType +
+                        _attributes!['FINANCE_TYPE'].toString())
+                    : Text(AppLocalizations.of(context)!.financeType +
+                        _attributes!['資助種類'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.level +
+                        _attributes!['SCHOOL_LEVEL'].toString())
+                    : Text(AppLocalizations.of(context)!.level +
+                        _attributes!['資助學校類型種類'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.telephone +
+                        _attributes!['TELEPHONE'].toString())
+                    : Text(AppLocalizations.of(context)!.telephone +
+                        _attributes!['聯絡電話'].toString()),
+                ElevatedButton(
+                  child: Text(AppLocalizations.of(context)!.call),
+                  onPressed: () async {
+                    FlutterPhoneDirectCaller.callNumber(_isEn
+                            ? _attributes!['TELEPHONE'].toString()
+                            : _attributes!['聯絡電話'].toString())
+                        .toString();
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.faxNumber +
+                        _attributes!['FAX_NUMBER'].toString())
+                    : Text(AppLocalizations.of(context)!.faxNumber +
+                        _attributes!['傳真號碼'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.religon +
+                        _attributes!['RELIGION'].toString())
+                    : Text(AppLocalizations.of(context)!.religon +
+                        _attributes!['宗教'].toString()),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                _isEn
+                    ? Text(AppLocalizations.of(context)!.website)
+                    : Text(AppLocalizations.of(context)!.website),
                 RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: attributes!['網頁'].toString(),
+                        text: _isEn
+                            ? _attributes!['WEBSITE'].toString()
+                            : _attributes!['網頁'].toString(),
                         style: const TextStyle(
                             color: Colors.black,
                             decoration: TextDecoration.underline),
@@ -113,7 +268,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ),
                 Link(
-                  uri: Uri.parse(attributes!['網頁'].toString()),
+                  uri: Uri.parse(_isEn
+                      ? _attributes!['WEBSITE'].toString()
+                      : _attributes!['網頁'].toString()),
                   target: LinkTarget.blank,
                   builder: (BuildContext ctx, FollowLink? openLink) {
                     return TextButton.icon(
@@ -126,16 +283,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ],
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () => MapsLauncher.launchQuery(attributes!['中文地址']),
-              child: const Text('LAUNCH QUERY'),
-            ),
-            ElevatedButton(
-              onPressed: () => MapsLauncher.launchCoordinates(
-                  attributes!['緯度'],
-                  attributes!['經度'],
-                  attributes!['緯度'] + ", " + attributes!['經度']),
-              child: const Text('LAUNCH COORDINATES'),
+            Flex(
+              direction: Axis.horizontal,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () =>
+                      MapsLauncher.launchQuery(_attributes!['中文地址']),
+                  child: const Text('LAUNCH QUERY'),
+                ),
+                ElevatedButton(
+                  onPressed: () => MapsLauncher.launchCoordinates(
+                      _attributes!['緯度'],
+                      _attributes!['經度'],
+                      _attributes!['緯度'] + ", " + _attributes!['經度']),
+                  child: const Text('LAUNCH COORDINATES'),
+                ),
+              ],
             ),
           ],
         ),
