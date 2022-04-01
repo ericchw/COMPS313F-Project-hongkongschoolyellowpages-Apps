@@ -8,6 +8,7 @@ import 'package:hongkongschoolyellowpages/screens/languageSetting.dart';
 import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hongkongschoolyellowpages/widget/search_Widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -47,9 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _getSchoolInfo() async {
     _schoolInfoList = await SchoolInfoApi().getSchoolInfo();
     print(_schoolInfoList!.length);
-    setState(() {
-      _isloading = false;
-    });
+    // List<String>? _schoolName_zh;
+    // for (int i = 0; i < _schoolInfoList!.length; i++) {
+    //   _schoolName_zh?.add(_schoolInfoList![i]["attributes"]["中文名稱"]);
+    // }
+    // print(_schoolName_zh!.length);
+    setState(
+      () {
+        _isloading = false;
+      },
+    );
     //print(_schoolInfoList![0]['attributes']['ENGLISH_NAME']);
   }
 
@@ -72,6 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
     }
   }
+
+  // Widget buildSearch() => SearchWidget(text: query, hintText: "searchSchoolHintText", onChanged:searchSchool,);
+  // void searchSchool(String query) {final schoolName_zh = )
 
   @override
   Widget build(BuildContext context) {

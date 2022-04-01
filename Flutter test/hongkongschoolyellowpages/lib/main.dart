@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         create: (context) => LocaleProvider(),
         builder: (context, child) {
           final provider = Provider.of<LocaleProvider>(context);
-          return new MaterialApp(
+          return MaterialApp(
             localizationsDelegates: [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

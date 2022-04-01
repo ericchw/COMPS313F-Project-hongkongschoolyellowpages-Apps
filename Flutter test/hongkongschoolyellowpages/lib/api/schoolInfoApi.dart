@@ -1,4 +1,4 @@
-import 'dart:convert';
+//import 'dart:convert';
 import 'package:dio/dio.dart';
 //import 'package:http/http.dart' as http;
 //import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
@@ -8,7 +8,7 @@ class SchoolInfoApi {
     try {
       final response = await Dio().get(
           'https://services3.arcgis.com/6j1KwZfY2fZrfNMR/arcgis/rest/services/Hong_Kong_School_Location_and_Information/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json');
-      List<dynamic> features = response.data['features'];
+      List<dynamic>? features = response.data['features'];
       //for (int i = 0; i < features.length; i++) {}
       //print(features[1]['attributes']['ENGLISH_NAME']);
       //print(features.length);
@@ -21,6 +21,7 @@ class SchoolInfoApi {
         print(e.message);
       }
     }
+    return null;
   }
 
   Future<Map?> getSchoolInfoByIndex(int id) async {
