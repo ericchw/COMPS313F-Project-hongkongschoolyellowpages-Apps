@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<Null> _refresh() async {
     _isloading = true;
+    _schoolInfoList!.clear();
     _getLanguage();
     _getSchoolInfo();
     return;
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
-    String _language = prefs.getString('language') ?? null!;
+    String _language = prefs.getString('language') ?? null!; //read lan setting
     print("getLanguage: " + _language);
     switch (_language) {
       case "en":
@@ -90,6 +91,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.yellow,
+        leading: const CircleAvatar(
+          radius: 15.0,
+          backgroundImage: NetworkImage(
+              "https://static.newmobilelife.com/wp-content/uploads/2018/07/macau1.jpg"),
+          backgroundColor: Colors.transparent,
+        ),
         title: Text(
           _isloading
               ? AppLocalizations.of(context)!.loading
@@ -159,9 +166,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     )
                   : ListTile(
-                      leading: Text(_schoolInfoList![index]['attributes']
-                              ['OBJECTID']
-                          .toString()),
+                      // leading: Text(_schoolInfoList![index]['attributes']
+                      //         ['OBJECTID']
+                      //     .toString()),
                       title: Text(
                         _schoolInfoList![index]['attributes']['中文名稱'],
                         style: const TextStyle(fontSize: 14),
