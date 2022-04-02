@@ -47,7 +47,7 @@ function myTable() {
     for (var i = 0; i < detail.length; i++) {
         var a;
         a = table.insertRow(0).insertCell(0)
-        a.innerHTML = detail[i].attributes.OBJECTID + ": " + detail[i].attributes.ENGLISH_NAME;
+        a.innerHTML = detail[i].attributes.OBJECTID + ": " + detail[i].attributes.中文名稱;
         a.setAttribute("onclick", "show(" + i + ");");
     }
 }

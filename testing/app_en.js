@@ -53,7 +53,7 @@ function myTable() {
 }
 //pass value
 function show(no) {
-    window.location.href = "show.html";
+    window.location.href = "show_en.html";
     //school no
     var schoolno = detail[no].attributes.SCHOOL_NO_;
     sessionStorage.setItem("schoolNo", schoolno);
