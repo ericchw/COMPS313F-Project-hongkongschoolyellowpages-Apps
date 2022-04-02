@@ -1,0 +1,33 @@
+{
+    "@@locale": "zh_TW",
+    
+    "hongKongSchoolYellowPages": "香港校網黃頁",
+    "loading": "載入中...",
+    "home": "主頁",
+    "search": "搜索",
+    "language": "語言",
+    "call": "撥打",
+    "open": "打開",
+    "openLink": "打開網站",
+    "openMap": "打開地圖",
+    
+    "details": "詳情",
+    "id": "序號: ",
+    "no": "編號: ",
+    "category": "類別: ",
+    "name": "名稱",
+    "address": "地址: ",
+    "studentGender": "就讀學生性別: ",
+    "session": "學校授課時間: ",
+    "district": "分區: ",
+    "financeType": "資助種類: ",
+    "level": "類型: ",
+    "telephone": "聯絡電話: ",
+    "faxNumber": "傳真號碼: ",
+    "website": "網頁: ",
+    "religon": "宗教: ",
+    "longitude": "經度",
+    "laitude": "緯度",
+    "easting": "坐標東",
+    "northing": "坐標北"
+}

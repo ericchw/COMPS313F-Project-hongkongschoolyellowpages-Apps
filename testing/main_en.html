@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #myInput {
+        background-image: url('/css/searchicon.png');
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+
+      #myUL {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #myUL li a {
+        border: 1px solid #ddd;
+        margin-top: -1px;
+        /* Prevent double borders */
+        background-color: #f6f6f6;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        display: block
+      }
+
+      #myUL li a:hover:not(.header) {
+        background-color: #eee;
+      }
+	  
+	  .adv_search {
+		background-color: #4CAF50;
+		color: white;
+		padding: 16px;
+		font-size: 16px;
+		border: none;
+	  }
+	  .adv_search:hover {
+		background-color: #04AA6D;
+		color: white;
+	  }
+	  
+	  
+	  .dropbtn {
+		background-color: #0088ff;
+		color: white;
+		padding: 16px;
+		font-size: 16px;
+		border: none;
+	  }
+	  .dropdown {
+		position: relative;
+		display: inline-block;
+	  }
+	  .dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	  }
+	  .dropdown-content a {
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	  }
+	  .dropdown-content a:hover {background-color: #0033ff;}
+	  .dropdown:hover .dropdown-content {display: block;}
+	  .dropdown:hover .dropbtn {background-color: #0033ff;}
+    </style>
+    <title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="app_en.js"></script>
+  </head>
+  <body>
+
+	<button class="adv_search" onclick="window.location.href='search.html'">進階搜尋</button>
+	<div class="dropdown">
+      <button class="dropbtn">語言設定</button>
+	    <div class="dropdown-content">
+		  <a href="main.html">繁體中文</a>
+		  <a href="main_en.html">English</a>
+		</div>
+	</div>
+	
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for index / names..." title="Type in a name">
+    <div>
+        <table id="myTable" class='myFormat' >
+            <tr><td></td><td></td></tr>
+        </table>      
+    </div> 
+  </body>
+</html>
