@@ -286,17 +286,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Flex(
               direction: Axis.horizontal,
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () =>
-                      MapsLauncher.launchQuery(_attributes!['中文地址']),
-                  child: const Text('LAUNCH QUERY'),
-                ),
+                // ElevatedButton(
+                //   onPressed: () =>
+                //       MapsLauncher.launchQuery(_attributes!['中文地址']),
+                //   child: const Text('LAUNCH QUERY'),
+                // ),
                 ElevatedButton(
                   onPressed: () => MapsLauncher.launchCoordinates(
                       _attributes!['緯度'],
                       _attributes!['經度'],
-                      _attributes!['緯度'] + ", " + _attributes!['經度']),
-                  child: const Text('LAUNCH COORDINATES'),
+                      _attributes!['緯度'].toString() +
+                          ", " +
+                          _attributes!['經度'].toString()),
+                  child: Text(AppLocalizations.of(context)!.openMap),
                 ),
               ],
             ),
