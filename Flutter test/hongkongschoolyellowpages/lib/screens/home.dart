@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<Null> _refresh() async {
-    _isloading = true;
+    _isLoading = true;
     _schoolInfoList!.clear();
     _getLanguage();
     _getSchoolInfo();
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //   });
   // }
 
-  bool _isloading = true;
+  bool _isLoading = true;
   bool _isEn = false;
   List? _schoolInfoList = [];
 
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // print(_schoolName_zh!.length);
     setState(
       () {
-        _isloading = false;
+        _isLoading = false;
       },
     );
     //print(_schoolInfoList![0]['attributes']['ENGLISH_NAME']);
@@ -63,8 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
-    String _language = prefs.getString('language') ??
-        "zh_Hant_TW"; //read lan setting en/zh-Hant-tw
+    String _language = prefs.getString('language') ?? "zh_Hant_TW";
     print("getLanguage: " + _language);
     switch (_language) {
       case "en":
@@ -91,14 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.yellow,
-        automaticallyImplyLeading: false,
-        // leading: const CircleAvatar(
-        //   radius: 15.0,
-        //   backgroundImage: NetworkImage("asset/logo.jpg"),
-        //   backgroundColor: Colors.transparent,
-        // ),
         title: Text(
-          _isloading
+          _isLoading
               ? AppLocalizations.of(context)!.loading
               : AppLocalizations.of(context)!.hongKongSchoolYellowPages,
           style:
