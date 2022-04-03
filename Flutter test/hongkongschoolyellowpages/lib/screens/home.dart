@@ -9,6 +9,7 @@ import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hongkongschoolyellowpages/widget/search_Widget.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

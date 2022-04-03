@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 //import 'package:http/http.dart' as http;
 //import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
 
+//https://daily-dev-tips.com/posts/top-anime-shows-flutter-app/
+
 class SchoolInfoApi {
   Future<List?> getSchoolInfo() async {
     try {
