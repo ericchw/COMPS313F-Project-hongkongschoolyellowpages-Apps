@@ -27,11 +27,11 @@ void _getAcceptTnc() async {
   switch (_acceptTnc) {
     case "acceptTnc":
       _isAcceptTnc = true;
-      print("_isAcceptTnc: true");
+      //print("_isAcceptTnc: true");
       break;
     default:
       _isAcceptTnc = false;
-      print("_isAcceptTnc: default false");
+      //print("_isAcceptTnc: default false");
       break;
   }
 }

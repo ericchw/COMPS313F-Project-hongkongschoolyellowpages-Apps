@@ -4,4 +4,4 @@ COMP 313F Flutter project which showing school infomation from target API (JSON 
 
 Features:
 -Listing all school infomation
--language setting (default: en / zh)
+-language setting (default: zh_Hant_TW / en)
