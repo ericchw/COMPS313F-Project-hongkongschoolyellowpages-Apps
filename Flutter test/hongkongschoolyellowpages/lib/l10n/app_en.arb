@@ -2,6 +2,13 @@
     "@@locale": "en",
     
     "hongKongSchoolYellowPages": "Hong Kong School Yellow Pages",
+
+    "tnc": "Terms and Conditions",
+    "cancel": "Cancel",
+    "confirm": "Confrim",
+    "remind": "Remind",
+    "pleaseAcceptTnc": "Please accept the Terms and Conditions",
+
     "loading": "Loading...",
     "home": "Home",
     "search": "Search",
@@ -13,9 +20,9 @@
 
     "details": "Details",
     "id": "ID: ",
-    "no": "No.: ",
+    "no": "No#: ",
     "category": "Catergory: ",
-    "name": "Name",
+    "name": "Name: ",
     "address": "Address: ",
     "studentGender": "Student gender: ",
     "session": "Session: ",
@@ -26,8 +33,8 @@
     "faxNumber": "Fax number: ",
     "website": "Website: ",
     "religon": "Religon: ",
-    "longitude": "Longitude",
-    "laitude": "Laitude",
-    "easting": "Easting",
-    "northing": "Northing"
+    "longitude": "Longitude: ",
+    "laitude": "Laitude: ",
+    "easting": "Easting: ",
+    "northing": "Northing: "
 }

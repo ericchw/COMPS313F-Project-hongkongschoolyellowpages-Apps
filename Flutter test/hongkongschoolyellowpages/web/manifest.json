@@ -1,11 +1,11 @@
 {
-    "name": "hongkongschoolyellowpages",
-    "short_name": "hongkongschoolyellowpages",
+    "name": "香港校網黃頁",
+    "short_name": "HKSYP",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "COMP S313F project",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

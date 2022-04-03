@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _isloading = true;
     _getLanguage();
     _getSchoolInfo();
   }
@@ -64,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
-    String _language = prefs.getString('language') ?? null!; //read lan setting
+    String _language = prefs.getString('language') ??
+        "zh_Hant_TW"; //read lan setting en/zh-Hant-tw
     print("getLanguage: " + _language);
     switch (_language) {
       case "en":
@@ -91,12 +91,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.yellow,
-        leading: const CircleAvatar(
-          radius: 15.0,
-          backgroundImage: NetworkImage(
-              "https://static.newmobilelife.com/wp-content/uploads/2018/07/macau1.jpg"),
-          backgroundColor: Colors.transparent,
-        ),
+        automaticallyImplyLeading: false,
+        // leading: const CircleAvatar(
+        //   radius: 15.0,
+        //   backgroundImage: NetworkImage("asset/logo.jpg"),
+        //   backgroundColor: Colors.transparent,
+        // ),
         title: Text(
           _isloading
               ? AppLocalizations.of(context)!.loading
@@ -110,16 +110,18 @@ class _HomeScreenState extends State<HomeScreen> {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LanguageSettingScreen()))
-                    .then((value) {
-                  setState(() {
-                    // refresh state
-                    _refresh();
-                  });
-                });
-                //Navigator.pushNamed(context, 'LanguageSetting');
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => LanguageSettingScreen())).then(
+                  (value) {
+                    setState(
+                      () {
+                        // refresh state
+                        _refresh();
+                      },
+                    );
+                  },
+                );
               },
               child: const Icon(
                 Icons.public,
@@ -131,7 +133,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: RefreshIndicator(
-        color: Colors.white,
+        backgroundColor: Colors.yellow,
+        color: Colors.green,
         onRefresh: _refresh,
         child: Card(
           child: ListView.builder(
@@ -166,9 +169,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     )
                   : ListTile(
-                      // leading: Text(_schoolInfoList![index]['attributes']
-                      //         ['OBJECTID']
-                      //     .toString()),
+                      leading: Text(_schoolInfoList![index]['attributes']
+                              ['OBJECTID']
+                          .toString()),
                       title: Text(
                         _schoolInfoList![index]['attributes']['中文名稱'],
                         style: const TextStyle(fontSize: 14),
