@@ -23,18 +23,7 @@ Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 void _getAcceptTnc() async {
   final SharedPreferences prefs = await _prefs;
-  String _acceptTnc = prefs.getString('acceptTnc') ?? "false";
-  print("getAccept: " + _acceptTnc);
-  switch (_acceptTnc) {
-    case "acceptTnc":
-      _isAcceptTnc = true;
-      //print("_isAcceptTnc: true");
-      break;
-    default:
-      _isAcceptTnc = false;
-      //print("_isAcceptTnc: default false");
-      break;
-  }
+  _isAcceptTnc = prefs.getBool('acceptTnc')!;
 }
 
 //import everyScreen for Nagvation
