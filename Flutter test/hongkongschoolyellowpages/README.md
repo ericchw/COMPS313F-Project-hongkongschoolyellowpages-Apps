@@ -9,6 +9,12 @@ Features:
 
 
 command for release:
-    Android (path: \build\app\outputs\flutter-apk\app-release.apk):
-     -flutter build apk
+    Android - path: \build\app\outputs\flutter-apk\app-release.apk:
+      -flutter build apk
+    Windwos- path: \build\windows\runner\Release:
+      -flutter build windows   
+    Web - \build\web:
+      -flutter build web
+    IOS - :
+      -
 
