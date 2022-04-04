@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   Future<Null> _refresh() async {
+    _getLanguage();
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   //https://medium.flutterdevs.com/custom-animated-bottomnavigation-bar-in-flutter-65293e231e4a
   bool _isLoading = true;
-  bool _isEn = false;
+  bool _isEn = true;
   List? _schoolInfoList = <SchoolInfo>[];
   late AnimationController controller;
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -241,6 +242,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             isThreeLine: false,
                             dense: true,
                             onTap: () {
+                              //print(_isEn);
                               Navigator.pushNamed(
                                 context,
                                 "Details",
@@ -267,6 +269,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             isThreeLine: false,
                             dense: true,
                             onTap: () {
+                              //print(_isEn);
                               Navigator.pushNamed(
                                 context,
                                 "Details",
@@ -275,7 +278,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   "isEn": _isEn,
                                 },
                               );
-                              print(_isEn);
                             },
                           );
                   },

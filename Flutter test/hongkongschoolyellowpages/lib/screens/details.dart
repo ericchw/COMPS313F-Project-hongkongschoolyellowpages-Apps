@@ -53,7 +53,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     final args = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
-    bool _isEn = args['isEn'] ?? false;
+    bool _isEn = args['isEn'] ?? true;
     _attributes = args['index']['attributes'];
     return Scaffold(
       appBar: AppBar(
