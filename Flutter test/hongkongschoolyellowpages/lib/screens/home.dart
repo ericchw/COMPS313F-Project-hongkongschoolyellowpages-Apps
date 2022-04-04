@@ -56,14 +56,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return;
   }
 
-  // final pages = [HomeScreen(), HomeScreen(), LanguageSettingScreen()];
-  // int _selectedIndex = 1;
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
-
+  @override
+  //https://medium.flutterdevs.com/custom-animated-bottomnavigation-bar-in-flutter-65293e231e4a
   bool _isLoading = true;
   bool _isEn = false;
   List? _schoolInfoList = [];
@@ -85,6 +79,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
     //print(_schoolInfoList![0]['attributes']['ENGLISH_NAME']);
   }
+
+  //https://karthikponnam.medium.com/flutter-search-in-listview-1ffa40956685
+  TextEditingController editingController = TextEditingController();
+  final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
@@ -113,20 +111,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return _isLoading
         ? Scaffold(
-            backgroundColor: Colors.yellow,
+            backgroundColor: Colors.yellowAccent.shade100,
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Colors.yellow,
               leading: const CircleAvatar(
                 radius: 15.0,
-                backgroundImage: NetworkImage(
-                    "https://static.newmobilelife.com/wp-content/uploads/2018/07/macau1.jpg"),
+                backgroundImage: AssetImage("assets/logos/logo.jpg"),
                 backgroundColor: Colors.transparent,
               ),
               title: Text(
-                _isLoading
-                    ? AppLocalizations.of(context)!.loading
-                    : AppLocalizations.of(context)!.hongKongSchoolYellowPages,
+                AppLocalizations.of(context)!.loading,
                 style: const TextStyle(
                     fontWeight: FontWeight.w500, color: Colors.black),
               ),
@@ -162,8 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               backgroundColor: Colors.yellow,
               leading: const CircleAvatar(
                 radius: 15.0,
-                backgroundImage: NetworkImage(
-                    "https://static.newmobilelife.com/wp-content/uploads/2018/07/macau1.jpg"),
+                backgroundImage: AssetImage("assets/logos/logo.jpg"),
                 backgroundColor: Colors.transparent,
               ),
               title: Text(
@@ -204,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
             body: RefreshIndicator(
               backgroundColor: Colors.yellow,
-              color: Colors.green,
+              color: Colors.black,
               onRefresh: _refresh,
               child: Card(
                 child: ListView.builder(
@@ -270,29 +264,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            // bottomNavigationBar: BottomNavigationBar(
-            //   backgroundColor: Colors.yellow,
-            //   items: const <BottomNavigationBarItem>[
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.search),
-            //       label: 'Search',
-            //       backgroundColor: Colors.red,
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.home),
-            //       label: 'Home',
-            //       backgroundColor: Colors.yellow,
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.public),
-            //       label: 'Lanugage',
-            //       backgroundColor: Colors.blue,
-            //     ),
-            //   ],
-            //   currentIndex: _selectedIndex,
-            //   selectedItemColor: Colors.amber[800],
-            //   onTap: _onItemTapped,
-            // ),
           );
   }
 }

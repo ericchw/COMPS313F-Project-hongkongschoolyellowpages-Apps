@@ -4,7 +4,9 @@ import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hongkongschoolyellowpages/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hongkongschoolyellowpages/screens/startupView.dart';
 import 'package:hongkongschoolyellowpages/screens/tnc.dart';
+// import 'package:hongkongschoolyellowpages/screens/bottomNavigationController.dart';
 import 'package:hongkongschoolyellowpages/screens/home.dart';
 import 'package:hongkongschoolyellowpages/screens/languageSetting.dart';
 import 'package:hongkongschoolyellowpages/screens/details.dart';
@@ -13,7 +15,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   runApp(MyApp());
   _getAcceptTnc();
-  print("getAccept: " + _isAcceptTnc.toString());
 }
 
 bool _isAcceptTnc = false;
@@ -55,7 +56,10 @@ class MyApp extends StatelessWidget {
             supportedLocales: L10n.all,
             locale: provider.locale,
             routes: {
+              // "StartupView": (context) => StartupViewScreen(),
               "Tnc": (context) => TncScreen(),
+              // "BottomNavigationController": (context) =>
+              //     BottomNavigationController(),
               "Home": (context) => HomeScreen(),
               "LanguageSetting": (context) => LanguageSettingScreen(),
               "Details": (context) => DetailsScreen(),

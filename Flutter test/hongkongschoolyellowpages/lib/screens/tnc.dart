@@ -303,7 +303,7 @@ class _TncScreenState extends State<TncScreen> {
                         gradient: LinearGradient(
                           colors: [
                             Colors.red.shade600,
-                            Colors.orange.shade500,
+                            Colors.yellow.shade500,
                           ],
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
@@ -329,12 +329,7 @@ class _TncScreenState extends State<TncScreen> {
                   child: RaisedButton(
                     onPressed: () {
                       _setAcceptTnc("acceptTnc");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen())).then(
-                        (value) {},
-                      );
+                      Navigator.pushNamed(context, 'Home');
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(80.0)),
