@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: L10n.all,
             locale: provider.locale,
             routes: {
-              // "StartupView": (context) => StartupViewScreen(),
+              "StartupView": (context) => StartupViewScreen(),
               "Tnc": (context) => TncScreen(),
               // "BottomNavigationController": (context) =>
               //     BottomNavigationController(),
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
               "Details": (context) => DetailsScreen(),
             },
             debugShowCheckedModeBanner: false,
-            home: _isAcceptTnc ? HomeScreen() : TncScreen(),
+            home: _isAcceptTnc ? HomeScreen() : StartupViewScreen(),
           );
         },
       );

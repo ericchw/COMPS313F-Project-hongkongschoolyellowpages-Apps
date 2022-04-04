@@ -1,16 +1,12 @@
-import 'dart:io';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hongkongschoolyellowpages/api/schoolInfoApi.dart';
-// import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
+import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
+import 'package:hongkongschoolyellowpages/widget/search_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hongkongschoolyellowpages/l10n/l10n.dart';
 import 'package:hongkongschoolyellowpages/screens/languageSetting.dart';
-import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:hongkongschoolyellowpages/widget/search_Widget.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -32,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
     _getLanguage();
     _getSchoolInfo();
+    // _schoolInfoSearchList = _schoolInfoList;
   }
 
   void dispose() {
@@ -60,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   //https://medium.flutterdevs.com/custom-animated-bottomnavigation-bar-in-flutter-65293e231e4a
   bool _isLoading = true;
   bool _isEn = false;
-  List? _schoolInfoList = [];
+  List? _schoolInfoList = <SchoolInfo>[];
   late AnimationController controller;
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -79,10 +76,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
     //print(_schoolInfoList![0]['attributes']['ENGLISH_NAME']);
   }
-
-  //https://karthikponnam.medium.com/flutter-search-in-listview-1ffa40956685
-  TextEditingController editingController = TextEditingController();
-  final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
 
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
@@ -104,8 +97,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
   }
 
-  // Widget buildSearch() => SearchWidget(text: query, hintText: "searchSchoolHintText", onChanged:searchSchool,);
-  // void searchSchool(String query) {final schoolName_zh = )
+  // String _query = '';
+  // late List? _schoolInfoSearchList;
+  // void searchSchool(String _query) {
+  //   final _schoolInfoSearchList = _schoolInfoList?.where((attributes) {
+  //     final nameEn = _schoolInfoList![0].nameEn;
+  //   }).toList();
+  // }
+
+  // Widget buildSearch() => SearchWidget(
+  //       text: _query,
+  //       hintText: 'hintText',
+  //       onChanged: searchSchool,
+  //     );
 
   @override
   Widget build(BuildContext context) {
@@ -126,40 +130,54 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fontWeight: FontWeight.w500, color: Colors.black),
               ),
             ),
-            body: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, //Center Row contents horizontally,
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, //Center Row contents vertically,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment
-                        .center, //Center Column contents horizontally,
-                    children: <Widget>[
-                      Text(AppLocalizations.of(context)!.loading,
-                          style: Theme.of(context).textTheme.headline6),
-                      CircularProgressIndicator(
-                        value: controller.value,
-                        semanticsLabel: 'Linear progress indicator',
-                      ),
-                    ],
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(AppLocalizations.of(context)!.loading,
+                      style: Theme.of(context).textTheme.headline6),
+                  CircularProgressIndicator(
+                    value: controller.value,
+                    semanticsLabel: 'Linear progress indicator',
                   ),
-                ),
-              ],
+                  Lottie.asset(
+                    'assets/lottie/load.json', //Lottie.network('https://assets3.lottiefiles.com/datafiles/MaKSoctsyXXTCDOpDktJYEcS3ws5SI6CLDo7iyMc/ex-splash.json', //or assets
+                    animate: true,
+                  ),
+                ],
+              ),
             ),
           )
         : Scaffold(
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Colors.yellow,
-              leading: const CircleAvatar(
-                radius: 15.0,
-                backgroundImage: AssetImage("assets/logos/logo.jpg"),
-                backgroundColor: Colors.transparent,
-              ),
+              // leading: Padding(
+              //   padding: const EdgeInsets.only(right: 20.0),
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                   builder: (context) => LanguageSettingScreen()))
+              //           .then(
+              //         (value) {
+              //           setState(
+              //             () {
+              //               // refresh state
+              //               _refresh();
+              //             },
+              //           );
+              //         },
+              //       );
+              //     },
+              //     child: const Icon(
+              //       Icons.public,
+              //       color: Colors.black,
+              //       size: 26.0,
+              //     ),
+              //   ),
+              // ),
               title: Text(
                 _isLoading
                     ? AppLocalizations.of(context)!.loading
@@ -169,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               actions: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
+                  padding: EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(

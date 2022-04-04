@@ -3,8 +3,8 @@ import 'dart:convert';
 //part 'schoolInfo.g.dart';
 class SchoolInfo {
   List? _features;
-  List? get features => this._features;
 
+  List? get features => this._features;
   set features(List? value) => this._features = value;
 
   SchoolInfo(this._features);

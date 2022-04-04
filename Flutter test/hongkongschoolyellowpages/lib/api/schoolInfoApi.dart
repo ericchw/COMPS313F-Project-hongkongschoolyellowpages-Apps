@@ -1,6 +1,7 @@
-//import 'dart:convert';
+import 'dart:convert';
 import 'package:dio/dio.dart';
-//import 'package:http/http.dart' as http;
+import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
+import 'package:http/http.dart' as http;
 //import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
 
 //https://daily-dev-tips.com/posts/top-anime-shows-flutter-app/
@@ -25,6 +26,23 @@ class SchoolInfoApi {
     }
     return null;
   }
+
+  // static Future<List<SchoolInfo>> getSchoolInfo() async {
+  //   final url = Uri.parse(
+  //       'https://services3.arcgis.com/6j1KwZfY2fZrfNMR/arcgis/rest/services/Hong_Kong_School_Location_and_Information/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json');
+  //   final response = await http.get(url);
+
+  //   if (response.statusCode == 200) {
+  //     final List _schoolInfo = json.decode(response.body);
+
+  //     return _schoolInfo.map((json) => SchoolInfo.fromJson(json)).where((book) {
+  //       final titleLower = _schoolInfo.title.toLowerCase();
+  //       final authorLower = _schoolInfo.author.toLowerCase();
+  //     }).toList();
+  //   } else {
+  //     throw Exception();
+  //   }
+  // }
 
   Future<Map?> getSchoolInfoByIndex(int id) async {
     try {
