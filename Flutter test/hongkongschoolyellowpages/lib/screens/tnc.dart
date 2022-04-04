@@ -133,7 +133,7 @@ class _TncScreenState extends State<TncScreen> {
               <p><strong>Service</strong> refers to the Application.</p>
               </li>
               <li>
-              <p><strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">Terms and Conditions Generator</a>.</p>
+              <p><strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the <strong>Terms and Conditions Generator</strong>.</p>
               </li>
               <li>
               <p><strong>Third-party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.</p>
@@ -221,7 +221,7 @@ class _TncScreenState extends State<TncScreen> {
               <p><strong>服務</ strong>是指應用程序。</p>
               </li>
               <li>
-              <p><strong>條款和條件</ strong>（也稱為“術語”）是指在您與公司之間的整個協議方面，這些條款和條件在於使用服務。此術語和條件協議已在此處創建 <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">條款和條件發生器</a>.</p>
+              <p><strong>條款和條件</ strong>（也稱為“術語”）是指在您與公司之間的整個協議方面，這些條款和條件在於使用服務。此術語和條件協議已在此處創建 <strong>條款和條件發生器</strong>.</p>
               </li>
               <li>
               <p><strong>第三方社交媒體服務</ strong>是指由服務提供或提供的第三方提供的任何服務或內容（包括數據，信息，產品或服務），包括或提供服務。</p>
@@ -273,7 +273,7 @@ class _TncScreenState extends State<TncScreen> {
               <p>如果您對這些條款和條件有任何疑問，可以聯繫我們：</p>
               <ul>
               <li>
-              <p>通過電子郵件：xxxx@hkmu.edu.hk</p>
+              <p>通過電子郵件：sxxxxxxx@hkmu.edu.hk</p>
               </li>
               <li>
               <p>通過訪問本網站上的此頁面：<a href="www.hongkongschoolyellowpage.com" rel="external nofollow noopener" target="_blank">www.hongkongschoolyellowpage.com</a></p>
