@@ -66,6 +66,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
+  web: true
   windows: true
   image_path: "assets/logos/logo.png"
 
@@ -79,6 +80,11 @@ flutter_icons:
 flutter_native_splash:
   color: "#ffe135"
   image: "assets/logos/logo.png"
+  color_dark: "#1a1a1a"
+  android: true
+  ios: true
+  web: true
+  windows: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
