@@ -15,6 +15,9 @@ command for release:
       -flutter build windows   
     Web - \build\web:
       -flutter build web
-    IOS - :
-      -
-
+    IOS (xCode):
+      -flutter build ios
+    macOS (xCode):
+      -flutter build macos
+    Linux (xCode):
+      -flutter build linux
