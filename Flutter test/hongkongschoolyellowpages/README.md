@@ -5,3 +5,10 @@ COMP 313F Flutter project which showing school infomation from target API (JSON 
 Features:
 -Listing all school infomation
 -language setting (default: zh_Hant_TW / en)
+
+
+
+command for release:
+    Android (path: \build\app\outputs\flutter-apk\app-release.apk):
+     -flutter build apk
+
