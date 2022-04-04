@@ -84,7 +84,6 @@ flutter_native_splash:
   android: true
   ios: true
   web: true
-  windows: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
