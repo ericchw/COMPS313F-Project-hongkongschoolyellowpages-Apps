@@ -153,32 +153,32 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Colors.yellow,
-              // leading: Padding(
-              //   padding: const EdgeInsets.only(right: 20.0),
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                   builder: (context) => LanguageSettingScreen()))
-              //           .then(
-              //         (value) {
-              //           setState(
-              //             () {
-              //               // refresh state
-              //               _refresh();
-              //             },
-              //           );
-              //         },
-              //       );
-              //     },
-              //     child: const Icon(
-              //       Icons.public,
-              //       color: Colors.black,
-              //       size: 26.0,
-              //     ),
-              //   ),
-              // ),
+              leading: const Padding(
+                padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                // child: GestureDetector(
+                //   onTap: () {
+                //     Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => LanguageSettingScreen()))
+                //         .then(
+                //       (value) {
+                //         setState(
+                //           () {
+                //             // refresh state
+                //             _refresh();
+                //           },
+                //         );
+                //       },
+                //     );
+                //   },
+                //   child: const Icon(
+                //     Icons.public,
+                //     color: Colors.black,
+                //     size: 26.0,
+                //   ),
+                // ),
+              ),
               title: Text(
                 _isLoading
                     ? AppLocalizations.of(context)!.loading
