@@ -35,7 +35,7 @@ command for release package:
       -flutter build windows
     ~ Web - \build\web:
     *just change to <base href="./"> (line 17)in index.html after you build the web.*
-    *release not working as splash screen stuck https://github.com/jonbhanson/flutter_native_splash/issues/324*
+    *known issue -> splash screen stuck https://github.com/jonbhanson/flutter_native_splash/issues/324*
     *Workaround - debug using web*
       -flutter build web
     X IOS (xCode):
