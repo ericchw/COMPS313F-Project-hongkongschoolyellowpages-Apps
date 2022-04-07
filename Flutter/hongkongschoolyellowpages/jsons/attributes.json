@@ -1,0 +1,42 @@
+{
+    "attributes": {
+        "OBJECTID": 1,
+        "SCHOOL_NO_": 114502000123,
+        "ENGLISH_CATEGORY": "Aided Primary Schools",
+        "中文類別": "資助小學",
+        "ENGLISH_NAME": "SIR ROBERT BLACK COLLEGE OF EDUCATION PAST STUDENTS' ASSOCIATION LU KWONG FAI MEMORIAL SCHOOL",
+        "中文名稱": "柏立基教育學院校友會盧光輝紀念學校",
+        "ENGLISH_ADDRESS": "221 KWAI SHING CIRCUIT KWAI CHUNG NEW TERRITORIES",
+        "中文地址": "新界葵涌葵盛圍221號",
+        "LONGITUDE": 114.12295048,
+        "經度": 114.12295048,
+        "LATITUDE": 22.36346934,
+        "緯度": 22.36346934,
+        "EASTING": 830714,
+        "坐標東": 830714,
+        "NORTHING": 824925,
+        "坐標北": 824925,
+        "STUDENTS_GENDER": "CO-ED",
+        "就讀學生性別": "男女",
+        "SESSION": "WHOLE DAY",
+        "學校授課時間": "全日",
+        "DISTRICT": "KWAI TSING",
+        "分區": "葵青區",
+        "FINANCE_TYPE": "AIDED",
+        "資助種類": "資助",
+        "SCHOOL_LEVEL": "PRIMARY",
+        "學校類型": "小學",
+        "TELEPHONE": 24290452,
+        "聯絡電話": 24290452,
+        "FAX_NUMBER": 24801757,
+        "傳真號碼": 24801757,
+        "WEBSITE": "http://www.lynms.edu.hk",
+        "網頁": "http://www.lynms.edu.hk",
+        "RELIGION": "NOT APPLICABLE",
+        "宗教": "不適用"
+    },
+    "geometry": {
+        "x": 114.1229504800001,
+        "y": 22.363469340000044
+    }
+}
