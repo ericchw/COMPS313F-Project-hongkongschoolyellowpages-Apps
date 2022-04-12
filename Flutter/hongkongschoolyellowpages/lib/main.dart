@@ -36,6 +36,20 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           final provider = Provider.of<LocaleProvider>(context);
           return MaterialApp(
+            theme: ThemeData(
+              brightness: Brightness.light,
+              /* light theme settings */
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              /* dark theme settings */
+            ),
+            themeMode: ThemeMode.system,
+            /* ThemeMode.system to follow system theme,
+            ThemeMode.light for light theme, 
+            ThemeMode.dark for dark theme
+            */
+            debugShowCheckedModeBanner: false,
             localizationsDelegates: [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -53,7 +67,6 @@ class MyApp extends StatelessWidget {
               "LanguageSetting": (context) => LanguageSettingScreen(),
               "Details": (context) => DetailsScreen(),
             },
-            debugShowCheckedModeBanner: false,
             home: _isAcceptTnc ? HomeScreen() : StartupViewScreen(),
           );
         },

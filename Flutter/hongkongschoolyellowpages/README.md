@@ -5,6 +5,7 @@ COMP 313F Flutter project which showing school infomation from target API (JSON 
 -----------------------------------------------------------------------------------------------
 
 Features:
+-ThemeMode to follow system theme (dark/light)
 -Native splash screen (with icon and yellow backgroup)
 -Lottie animation (schoolbus animation)
 -Animation with button actionListener (startupViewScreen 開始button-> press and have click animation then naviagtor to tncScreen ) 

@@ -61,12 +61,11 @@ class _LanguageSettingState extends State<LanguageSettingScreen> {
           backgroundColor: Colors.yellow,
           title: Text(
             AppLocalizations.of(context)!.language,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),
         ),
-        backgroundColor: Colors.grey[200],
         body: SafeArea(
           child: ListView(
             children: <Widget>[

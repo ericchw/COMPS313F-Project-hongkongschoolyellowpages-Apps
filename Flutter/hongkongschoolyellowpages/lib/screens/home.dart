@@ -114,23 +114,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return _isLoading
         ? Scaffold(
-            backgroundColor: Colors.yellowAccent.shade100,
-            appBar: AppBar(
-              centerTitle: true,
-              backgroundColor: Colors.yellow,
-              leading: const CircleAvatar(
-                radius: 15.0,
-                backgroundImage: AssetImage("assets/logos/logo.png"),
-                backgroundColor: Colors.transparent,
-              ),
-              title: Text(
-                AppLocalizations.of(context)!.loading,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w500, color: Colors.black),
-              ),
-            ),
+            backgroundColor:
+                isDark ? Theme.of(context).backgroundColor : Colors.yellow,
+            // appBar: AppBar(
+            //   centerTitle: true,
+            //   backgroundColor: Colors.yellow,
+            //   leading: const CircleAvatar(
+            //     radius: 15.0,
+            //     backgroundImage: AssetImage("assets/logos/logo.png"),
+            //     backgroundColor: Colors.transparent,
+            //   ),
+            //   title: Text(
+            //     AppLocalizations.of(context)!.loading,
+            //     style: const TextStyle(
+            //         fontWeight: FontWeight.w500, color: Colors.black),
+            //   ),
+            // ),
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
