@@ -19,11 +19,12 @@ Features:
 -Details Page: OpenMap to launch map apps (On iOS, map links as specified by Apple are launched. On Android, the geo intent is used as documented here. For web and other platforms, the plugin will simply launch Google Maps.)
 -Details Page: Call function
 -Details Page: Open website function
+-search bar by searching schoolName
+-sorting by ID or Name, ascend or desc
 
 -----------------------------------------------------------------------------------------------
 
 Pending:
--search bar by searching schoolName
 -filter function
 -iFrame to show map in details page
 
