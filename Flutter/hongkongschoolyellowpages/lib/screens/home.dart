@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hongkongschoolyellowpages/api/schoolInfoApi.dart';
 import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
+import 'package:hongkongschoolyellowpages/screens/search.dart';
 import 'package:hongkongschoolyellowpages/widget/search_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hongkongschoolyellowpages/l10n/l10n.dart';
@@ -28,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
     _getLanguage();
     _getSchoolInfo();
-    // _schoolInfoSearchList = _schoolInfoList;
   }
 
   void dispose() {
@@ -78,6 +78,23 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     //print(_schoolInfoList![0]['attributes']['ENGLISH_NAME']);
   }
 
+  searchMethod(String value) async {
+    List serachedSchoolList = [];
+    for (int i = 0; i < _schoolInfoList!.length; i++) {
+      if (_schoolInfoList![i]['attributes']['ENGLISH_NAME']
+              .toLowerCase()
+              .contains(value.toLowerCase()) ||
+          _schoolInfoList![i]['attributes']['中文名稱'].contains(value)) {
+        serachedSchoolList.add(_schoolInfoList![i]);
+      }
+    }
+    Navigator.pushNamed(
+      context,
+      "Search",
+      arguments: {'index': serachedSchoolList, "_isEn": _isEn},
+    );
+  }
+
   void _getLanguage() async {
     final SharedPreferences prefs = await _prefs;
     String _language = prefs.getString('language') ?? "zh_Hant_TW";
@@ -97,20 +114,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         break;
     }
   }
-
-  // String _query = '';
-  // late List? _schoolInfoSearchList;
-  // void searchSchool(String _query) {
-  //   final _schoolInfoSearchList = _schoolInfoList?.where((attributes) {
-  //     final nameEn = _schoolInfoList![0].nameEn;
-  //   }).toList();
-  // }
-
-  // Widget buildSearch() => SearchWidget(
-  //       text: _query,
-  //       hintText: 'hintText',
-  //       onChanged: searchSchool,
-  //     );
 
   @override
   Widget build(BuildContext context) {
@@ -221,68 +224,103 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               backgroundColor: Colors.yellow,
               color: Colors.black,
               onRefresh: _refresh,
-              child: Card(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  itemCount: _schoolInfoList!.length,
-                  itemBuilder: (context, index) {
-                    return _isEn
-                        ? ListTile(
-                            leading: Text(_schoolInfoList![index]['attributes']
-                                    ['OBJECTID']
-                                .toString()),
-                            title: Text(
-                              _schoolInfoList![index]['attributes']
-                                  ['ENGLISH_NAME'],
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                            subtitle: Text(
-                              _schoolInfoList![index]['attributes']['中文名稱'],
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            isThreeLine: false,
-                            dense: true,
-                            onTap: () {
-                              //print(_isEn);
-                              Navigator.pushNamed(
-                                context,
-                                "Details",
-                                arguments: {
-                                  'index': _schoolInfoList![index],
-                                  "_isEn": _isEn
-                                },
-                              );
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 1),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: TextField(
+                            //  controller: _filter,
+                            onSubmitted: (value) {
+                              searchMethod(value);
                             },
-                          )
-                        : ListTile(
-                            leading: Text(_schoolInfoList![index]['attributes']
-                                    ['OBJECTID']
-                                .toString()),
-                            title: Text(
-                              _schoolInfoList![index]['attributes']['中文名稱'],
-                              style: const TextStyle(fontSize: 14),
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(Icons.search),
+                              hintText: AppLocalizations.of(context)!.search,
+                              border: InputBorder.none,
                             ),
-                            subtitle: Text(
-                              _schoolInfoList![index]['attributes']
-                                  ['ENGLISH_NAME'],
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            isThreeLine: false,
-                            dense: true,
-                            onTap: () {
-                              //print(_isEn);
-                              Navigator.pushNamed(
-                                context,
-                                "Details",
-                                arguments: {
-                                  'index': _schoolInfoList![index],
-                                  "isEn": _isEn,
-                                },
-                              );
-                            },
-                          );
-                  },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Card(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          itemCount: _schoolInfoList!.length,
+                          itemBuilder: (context, index) {
+                            return _isEn
+                                ? ListTile(
+                                    leading: Text(_schoolInfoList![index]
+                                            ['attributes']['OBJECTID']
+                                        .toString()),
+                                    title: Text(
+                                      _schoolInfoList![index]['attributes']
+                                          ['ENGLISH_NAME'],
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    subtitle: Text(
+                                      _schoolInfoList![index]['attributes']
+                                          ['中文名稱'],
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                    isThreeLine: false,
+                                    dense: true,
+                                    onTap: () {
+                                      //print(_isEn);
+                                      Navigator.pushNamed(
+                                        context,
+                                        "Details",
+                                        arguments: {
+                                          'index': _schoolInfoList![index],
+                                          "_isEn": _isEn
+                                        },
+                                      );
+                                    },
+                                  )
+                                : ListTile(
+                                    leading: Text(_schoolInfoList![index]
+                                            ['attributes']['OBJECTID']
+                                        .toString()),
+                                    title: Text(
+                                      _schoolInfoList![index]['attributes']
+                                          ['中文名稱'],
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    subtitle: Text(
+                                      _schoolInfoList![index]['attributes']
+                                          ['ENGLISH_NAME'],
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                    isThreeLine: false,
+                                    dense: true,
+                                    onTap: () {
+                                      //print(_isEn);
+                                      Navigator.pushNamed(
+                                        context,
+                                        "Details",
+                                        arguments: {
+                                          'index': _schoolInfoList![index],
+                                          "isEn": _isEn,
+                                        },
+                                      );
+                                    },
+                                  );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

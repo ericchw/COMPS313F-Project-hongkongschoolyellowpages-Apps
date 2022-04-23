@@ -44,6 +44,7 @@ class _LanguageSettingState extends State<LanguageSettingScreen> {
           // print(value);
           localeModel.setLocale(value);
           _setLanguage(value.toString());
+          Navigator.pop(context);
           //print(value.toString());
         },
       );

@@ -15,6 +15,7 @@
     "loading": "Loading...",
     "home": "Home",
     "search": "Search",
+    "noData": "No data",
     "language": "Language",
     "call": "Call",
     "open": "Open",

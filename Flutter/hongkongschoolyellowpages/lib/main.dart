@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hongkongschoolyellowpages/screens/startupView.dart';
 import 'package:hongkongschoolyellowpages/screens/tnc.dart';
 // import 'package:hongkongschoolyellowpages/screens/bottomNavigationController.dart';
+import 'package:hongkongschoolyellowpages/screens/search.dart';
 import 'package:hongkongschoolyellowpages/screens/home.dart';
 import 'package:hongkongschoolyellowpages/screens/languageSetting.dart';
 import 'package:hongkongschoolyellowpages/screens/details.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
               // "BottomNavigationController": (context) =>
               //     BottomNavigationController(),
               "Home": (context) => HomeScreen(),
+              "Search": (context) => SearchScreen(),
               "LanguageSetting": (context) => LanguageSettingScreen(),
               "Details": (context) => DetailsScreen(),
             },

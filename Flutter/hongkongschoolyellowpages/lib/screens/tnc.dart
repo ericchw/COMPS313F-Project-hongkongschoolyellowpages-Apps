@@ -81,8 +81,7 @@ class _TncScreenState extends State<TncScreen> {
                 ).then((value) {
                   setState(
                     () {
-                      // refresh state
-                      _refresh();
+                      _refresh(); // refresh state
                     },
                   );
                 });
