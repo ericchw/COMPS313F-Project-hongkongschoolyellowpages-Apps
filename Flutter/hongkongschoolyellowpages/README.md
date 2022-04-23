@@ -10,6 +10,7 @@ Features:
 -Lottie animation (schoolbus animation)
 -Animation with button actionListener (startupViewScreen 開始button-> press and have click animation then naviagtor to tncScreen ) 
 -language setting with sharedPrefs(default: zh_Hant_TW / en)
+-changed language will pop toast
 -TncScreen with sharedPrefs (Pressed accept and wont show tncScreen again)
     -btw TncScreen shows with HTML file
     -tncScreen change lanugage will auto onRefresh()

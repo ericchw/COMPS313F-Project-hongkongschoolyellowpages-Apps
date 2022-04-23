@@ -47,6 +47,14 @@ class _LanguageSettingState extends State<LanguageSettingScreen> {
           // print(value);
           localeModel.setLocale(value);
           _setLanguage(value.toString());
+          Fluttertoast.showToast(
+              msg: "$value",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.yellow[200],
+              textColor: Colors.black,
+              fontSize: 16.0);
           Navigator.pop(context);
           //print(value.toString());
         },
