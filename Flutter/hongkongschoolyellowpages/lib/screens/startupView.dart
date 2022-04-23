@@ -25,49 +25,23 @@ class _StartupViewState extends State<StartupViewScreen>
       duration: const Duration(seconds: 1),
       vsync: this,
     );
-    controller.addStatusListener((status) async {
-      if (status == AnimationStatus.completed) {
-        Navigator.pop(context);
-        controller.reset();
-        Navigator.pushNamed(
-          context,
-          "Tnc",
-        );
-      }
-    });
+    controller.addStatusListener(
+      (status) async {
+        if (status == AnimationStatus.completed) {
+          Navigator.pop(context);
+          controller.reset();
+          Navigator.pushNamed(
+            context,
+            "Tnc",
+          );
+        }
+      },
+    );
   }
 
   void dispose() {
     super.dispose();
   }
-
-  // Future<Null> _refresh() async {
-  //   _getLanguage();
-  //   return;
-  // }
-
-  // bool _isEn = false;
-  // Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // void _getLanguage() async {
-  //   final SharedPreferences prefs = await _prefs;
-  //   String _language = prefs.getString('language') ??
-  //       "zh_Hant_TW"; //read lan setting en/zh-Hant-tw
-  //   print("getLanguage: " + _language);
-  //   switch (_language) {
-  //     case "en":
-  //       _isEn = true;
-  //       print("getLanguage: bool en");
-  //       break;
-  //     case "zh_Hant_TW":
-  //       _isEn = false;
-  //       print("getLanguage: bool zh_Hant_TW");
-  //       break;
-  //     default:
-  //       _isEn = false;
-  //       print("getLanguage: bool default zh_Hant_TW");
-  //       break;
-  //   }
-  // }
 
   late AnimationController controller;
 
@@ -106,68 +80,18 @@ class _StartupViewState extends State<StartupViewScreen>
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.yellow,
-        // leading: Padding(
-        //   padding: const EdgeInsets.only(right: 20.0),
-        //   child: GestureDetector(
-        //     onTap: () {
-        //       Navigator.push(
-        //           context,
-        //           MaterialPageRoute(
-        //               builder: (context) => LanguageSettingScreen())).then(
-        //         (value) {
-        //           setState(
-        //             () {
-        //               _refresh();
-        //             },
-        //           );
-        //         },
-        //       );
-        //     },
-        //     child: const Icon(
-        //       Icons.public,
-        //       color: Colors.black,
-        //       size: 26.0,
-        //     ),
-        //   ),
-        // ),
         title: Text(
           AppLocalizations.of(context)!.hongKongSchoolYellowPages,
           style:
               const TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
         ),
-        // actions: <Widget>[
-        //   Padding(
-        //     padding: EdgeInsets.only(right: 20.0),
-        //     child: GestureDetector(
-        //       onTap: () {
-        //         Navigator.push(
-        //             context,
-        //             MaterialPageRoute(
-        //                 builder: (context) => LanguageSettingScreen())).then(
-        //           (value) {
-        //             setState(
-        //               () {
-        //                 _refresh();
-        //               },
-        //             );
-        //           },
-        //         );
-        //       },
-        //       child: const Icon(
-        //         Icons.public,
-        //         color: Colors.black,
-        //         size: 26.0,
-        //       ),
-        //     ),
-        //   ),
-        // ],
       ),
       body: Center(
         child: Column(
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.2),
             Lottie.asset(
-              'assets/lottie/startupView.json', //Lottie.network('https://assets3.lottiefiles.com/datafiles/MaKSoctsyXXTCDOpDktJYEcS3ws5SI6CLDo7iyMc/ex-splash.json', //or assets
+              'assets/lottie/startupView.json', //Lottie.network('https://assets3.lottiefiles.com/datafiles/MaKSoctsyXXTCDOpDktJYEcS3ws5SI6CLDo7iyMc/ex-splash.json'
               animate: true,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),

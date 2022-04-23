@@ -91,7 +91,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     Navigator.pushNamed(
       context,
       "Search",
-      arguments: {'index': serachedSchoolList, "_isEn": _isEn},
+      arguments: {
+        'isEn': _isEn,
+        'index': serachedSchoolList,
+      },
     );
   }
 
@@ -282,8 +285,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         context,
                                         "Details",
                                         arguments: {
+                                          'isEn': _isEn,
                                           'index': _schoolInfoList![index],
-                                          "_isEn": _isEn
                                         },
                                       );
                                     },
@@ -310,8 +313,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         context,
                                         "Details",
                                         arguments: {
+                                          'isEn': _isEn,
                                           'index': _schoolInfoList![index],
-                                          "isEn": _isEn,
                                         },
                                       );
                                     },

@@ -40,73 +40,71 @@ class _SearchScreenState extends State<SearchScreen> {
       return Column(
         children: <Widget>[
           Expanded(
-            child: Expanded(
-              child: Card(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  itemCount: _serachedSchoolList.length,
-                  itemBuilder: (context, index) {
-                    return _isEn
-                        ? ListTile(
-                            leading: Text(_serachedSchoolList[index]
-                                    ['attributes']['OBJECTID']
-                                .toString()),
-                            title: Text(
-                              _serachedSchoolList[index]['attributes']
-                                  ['ENGLISH_NAME'],
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                            subtitle: Text(
-                              _serachedSchoolList[index]['attributes']['中文名稱'],
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            isThreeLine: false,
-                            dense: true,
-                            onTap: () {
-                              //print(_isEn);
-                              Navigator.pushNamed(
-                                context,
-                                "Details",
-                                arguments: {
-                                  'index': _serachedSchoolList[index],
-                                  "_isEn": _isEn
-                                },
-                              );
-                            },
-                          )
-                        : ListTile(
-                            leading: Text(_serachedSchoolList[index]
-                                    ['attributes']['OBJECTID']
-                                .toString()),
-                            title: Text(
-                              _serachedSchoolList[index]['attributes']['中文名稱'],
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                            subtitle: Text(
-                              _serachedSchoolList[index]['attributes']
-                                  ['ENGLISH_NAME'],
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            isThreeLine: false,
-                            dense: true,
-                            onTap: () {
-                              //print(_isEn);
-                              Navigator.pushNamed(
-                                context,
-                                "Details",
-                                arguments: {
-                                  'index': _serachedSchoolList[index],
-                                  "isEn": _isEn,
-                                },
-                              );
-                            },
-                          );
-                  },
-                ),
+            child: Card(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: _serachedSchoolList.length,
+                itemBuilder: (context, index) {
+                  return _isEn
+                      ? ListTile(
+                          leading: Text(_serachedSchoolList[index]['attributes']
+                                  ['OBJECTID']
+                              .toString()),
+                          title: Text(
+                            _serachedSchoolList[index]['attributes']
+                                ['ENGLISH_NAME'],
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          subtitle: Text(
+                            _serachedSchoolList[index]['attributes']['中文名稱'],
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          isThreeLine: false,
+                          dense: true,
+                          onTap: () {
+                            //print(_isEn);
+                            Navigator.pushNamed(
+                              context,
+                              "Details",
+                              arguments: {
+                                'index': _serachedSchoolList[index],
+                                "_isEn": _isEn
+                              },
+                            );
+                          },
+                        )
+                      : ListTile(
+                          leading: Text(_serachedSchoolList[index]['attributes']
+                                  ['OBJECTID']
+                              .toString()),
+                          title: Text(
+                            _serachedSchoolList[index]['attributes']['中文名稱'],
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          subtitle: Text(
+                            _serachedSchoolList[index]['attributes']
+                                ['ENGLISH_NAME'],
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          isThreeLine: false,
+                          dense: true,
+                          onTap: () {
+                            //print(_isEn);
+                            Navigator.pushNamed(
+                              context,
+                              "Details",
+                              arguments: {
+                                'isEn': _isEn,
+                                'index': _serachedSchoolList[index],
+                              },
+                            );
+                          },
+                        );
+                },
               ),
             ),
-          )
+          ),
         ],
       );
     } else {

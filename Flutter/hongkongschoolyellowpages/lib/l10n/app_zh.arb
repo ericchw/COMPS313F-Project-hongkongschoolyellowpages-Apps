@@ -15,6 +15,7 @@
     "loading": "載入中...",
     "home": "主頁",
     "search": "搜索",
+    "searchHintText": "請輸入中文或英文的學校名稱",
     "noData": "找不到",
     "language": "語言",
     "call": "撥打",
