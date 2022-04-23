@@ -34,7 +34,7 @@ Pending:
 command for release package:
     Android - path: \build\app\outputs\flutter-apk\app-release.apk:
       -flutter build apk
-    Windwos- path: \build\windows\runner\Release:
+    Windows- path: \build\windows\runner\Release:
       -flutter build windows
     ~ Web - \build\web:
     *just change to <base href="./"> (line 17)in index.html after you build the web.*
