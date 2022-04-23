@@ -55,21 +55,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void _orderByNameAscend() async {
     _isEn
         ? _schoolInfoList!.sort(
-            (a, b) => b['attributes']['ENGLISH_NAME']
-                .toLowerCase()
-                .compareTo(a['attributes']['ENGLISH_NAME'].toLowerCase()),
-          )
-        : _schoolInfoList!.sort(
-            (a, b) => b['attributes']['中文名稱']
-                .toLowerCase()
-                .compareTo(a['attributes']['中文名稱'].toLowerCase()),
-          );
-    setState(() {});
-  }
-
-  void _orderByNameDescend() async {
-    _isEn
-        ? _schoolInfoList!.sort(
             (a, b) => a['attributes']['ENGLISH_NAME'].toLowerCase().compareTo(
                   b['attributes']['ENGLISH_NAME'].toLowerCase(),
                 ),
@@ -78,6 +63,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             (a, b) => a['attributes']['中文名稱'].toLowerCase().compareTo(
                   b['attributes']['中文名稱'].toLowerCase(),
                 ),
+          );
+
+    setState(() {});
+  }
+
+  void _orderByNameDescend() async {
+    _isEn
+        ? _schoolInfoList!.sort(
+            (a, b) => b['attributes']['ENGLISH_NAME']
+                .toLowerCase()
+                .compareTo(a['attributes']['ENGLISH_NAME'].toLowerCase()),
+          )
+        : _schoolInfoList!.sort(
+            (a, b) => b['attributes']['中文名稱']
+                .toLowerCase()
+                .compareTo(a['attributes']['中文名稱'].toLowerCase()),
           );
     setState(() {});
   }
@@ -241,23 +242,23 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fontWeight: FontWeight.w500, color: Colors.black),
               ),
               actions: <Widget>[
-                IconButton(
-                  icon: const Icon(
-                    Icons.manage_search,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    //print(_isEn);
-                    Navigator.pushNamed(
-                      context,
-                      "Filter",
-                      arguments: {
-                        'isEn': _isEn,
-                        'schoolList': _schoolInfoList!,
-                      },
-                    );
-                  },
-                ),
+                // IconButton(
+                //   icon: const Icon(
+                //     Icons.manage_search,
+                //     color: Colors.black,
+                //   ),
+                //   onPressed: () {
+                //     //print(_isEn);
+                //     Navigator.pushNamed(
+                //       context,
+                //       "Filter",
+                //       arguments: {
+                //         'isEn': _isEn,
+                //         'schoolList': _schoolInfoList!,
+                //       },
+                //     );
+                //   },
+                // ),
                 PopupMenuButton(
                   icon: const Icon(
                     Icons.segment_sharp,
@@ -301,23 +302,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                     ),
                     PopupMenuItem(
-                      value: 6,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.arrow_downward,
-                          ),
-                          TextButton(
-                            onPressed: () => {_orderByNameDescend()},
-                            child: Text(
-                              AppLocalizations.of(context)!.orderByNameDescend,
-                              style: const TextStyle(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    PopupMenuItem(
                       value: 5,
                       child: Row(
                         children: [
@@ -328,6 +312,23 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             onPressed: () => {_orderByNameAscend()},
                             child: Text(
                               AppLocalizations.of(context)!.orderByNameAscend,
+                              style: const TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 6,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.arrow_downward,
+                          ),
+                          TextButton(
+                            onPressed: () => {_orderByNameDescend()},
+                            child: Text(
+                              AppLocalizations.of(context)!.orderByNameDescend,
                               style: const TextStyle(),
                             ),
                           ),
