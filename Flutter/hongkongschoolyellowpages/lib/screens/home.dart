@@ -259,83 +259,101 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 //     );
                 //   },
                 // ),
-                PopupMenuButton(
-                  icon: const Icon(
-                    Icons.segment_sharp,
-                    color: Colors.black,
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    cardColor: Colors.yellow[600],
                   ),
-                  itemBuilder: (context) => [
-                    PopupMenuItem(
-                      value: 4,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.arrow_upward,
-                          ),
-                          TextButton(
-                            onPressed: () => {(_orderByObjectIdAscend())},
-                            child: Text(
-                              AppLocalizations.of(context)!
-                                  .orderByObjectIdAscend,
-                              style: const TextStyle(),
-                            ),
-                          ),
-                        ],
-                      ),
+                  child: PopupMenuButton(
+                    icon: const Icon(
+                      Icons.segment_sharp,
+                      color: Colors.black,
                     ),
-                    PopupMenuItem(
-                      value: 3,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.arrow_downward,
-                          ),
-                          TextButton(
-                            onPressed: () => {_orderByObjectIdDescend()},
-                            child: Text(
-                              AppLocalizations.of(context)!
-                                  .orderByObjectIdDescend,
-                              style: const TextStyle(),
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        value: 4,
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_upward,
+                              color: Colors.black,
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    PopupMenuItem(
-                      value: 5,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.arrow_upward,
-                          ),
-                          TextButton(
-                            onPressed: () => {_orderByNameAscend()},
-                            child: Text(
-                              AppLocalizations.of(context)!.orderByNameAscend,
-                              style: const TextStyle(),
+                            TextButton(
+                              onPressed: () => {(_orderByObjectIdAscend())},
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .orderByObjectIdAscend,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    PopupMenuItem(
-                      value: 6,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.arrow_downward,
-                          ),
-                          TextButton(
-                            onPressed: () => {_orderByNameDescend()},
-                            child: Text(
-                              AppLocalizations.of(context)!.orderByNameDescend,
-                              style: const TextStyle(),
+                      PopupMenuItem(
+                        value: 3,
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_downward,
+                              color: Colors.black,
                             ),
-                          ),
-                        ],
+                            TextButton(
+                              onPressed: () => {_orderByObjectIdDescend()},
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .orderByObjectIdDescend,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      PopupMenuItem(
+                        value: 5,
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_upward,
+                              color: Colors.black,
+                            ),
+                            TextButton(
+                              onPressed: () => {_orderByNameAscend()},
+                              child: Text(
+                                AppLocalizations.of(context)!.orderByNameAscend,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 6,
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_downward,
+                              color: Colors.black,
+                            ),
+                            TextButton(
+                              onPressed: () => {_orderByNameDescend()},
+                              child: Text(
+                                AppLocalizations.of(context)!
+                                    .orderByNameDescend,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20.0),
