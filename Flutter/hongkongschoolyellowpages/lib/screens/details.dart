@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
-
-import 'package:hongkongschoolyellowpages/model/schoolInfo.dart';
-import 'package:hongkongschoolyellowpages/api/schoolInfoApi.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -205,12 +201,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             //   child: const Text('LAUNCH QUERY'),
                             // )
                             ElevatedButton.icon(
-                          onPressed: () => MapsLauncher.launchCoordinates(
+                          onPressed: () {
+                            Clipboard.setData(
+                              ClipboardData(
+                                text: _attributes!['緯度'].toString() +
+                                    ", " +
+                                    _attributes!['經度'].toString(),
+                              ),
+                            );
+                            MapsLauncher.launchCoordinates(
                               _attributes!['緯度'],
                               _attributes!['經度'],
                               _attributes!['緯度'].toString() +
                                   ", " +
-                                  _attributes!['經度'].toString()),
+                                  _attributes!['經度'].toString(),
+                            );
+                          },
                           label: Text(AppLocalizations.of(context)!.openMap,
                               style: const TextStyle(color: Colors.black)),
                           icon: const Icon(
@@ -253,7 +259,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         child: _isEn
                             ? Text(AppLocalizations.of(context)!.session +
                                 _attributes!['SESSION'].toString())
@@ -271,7 +277,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         child: _isEn
                             ? Text(AppLocalizations.of(context)!.district +
                                 _attributes!['DISTRICT'].toString())
@@ -289,7 +295,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         child: _isEn
                             ? Text(AppLocalizations.of(context)!.financeType +
                                 _attributes!['FINANCE_TYPE'].toString())
@@ -307,7 +313,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   children: <Widget>[
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
+                        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                         child: _isEn
                             ? Text(AppLocalizations.of(context)!.level +
                                 _attributes!['SCHOOL_LEVEL'].toString())
@@ -342,6 +348,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                         child: ElevatedButton.icon(
                           onPressed: () async {
+                            Clipboard.setData(
+                              ClipboardData(
+                                text: _attributes!['TELEPHONE'].toString(),
+                              ),
+                            );
                             FlutterPhoneDirectCaller.callNumber(_isEn
                                     ? _attributes!['TELEPHONE'].toString()
                                     : _attributes!['聯絡電話'].toString())

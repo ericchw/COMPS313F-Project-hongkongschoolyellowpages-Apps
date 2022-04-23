@@ -3,8 +3,11 @@ import 'package:hongkongschoolyellowpages/provider/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LanguageSettingScreen extends StatefulWidget {
+  const LanguageSettingScreen({Key? key}) : super(key: key);
+
   @override
   _LanguageSettingState createState() => _LanguageSettingState();
 }
@@ -15,7 +18,7 @@ class _LanguageSettingState extends State<LanguageSettingScreen> {
     super.initState();
   }
 
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   void _setLanguage(var language) async {
     final SharedPreferences prefs = await _prefs;
@@ -72,10 +75,10 @@ class _LanguageSettingState extends State<LanguageSettingScreen> {
             children: <Widget>[
               _buildLanguageItem(
                 "繁體中文",
-                Locale.fromSubtags(
+                const Locale.fromSubtags(
                     languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'),
               ),
-              _buildLanguageItem("English", Locale('en')),
+              _buildLanguageItem("English", const Locale('en')),
             ],
           ),
         ));

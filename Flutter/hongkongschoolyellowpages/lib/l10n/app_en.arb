@@ -17,6 +17,11 @@
     "search": "Search",
     "searchHintText": "Please enter school name in english or chinese",
     "noData": "No data",
+    "orderByObjectIdAscend": "ID ascend",
+    "orderByObjectIdDescend": "ID descend",
+    "orderByNameAscend": "Name ascend",
+    "orderByNameDescend": "Name descend",
+    
     "language": "Language",
     "call": "Call",
     "open": "Open",

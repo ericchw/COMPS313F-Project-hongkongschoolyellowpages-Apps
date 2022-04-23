@@ -17,6 +17,11 @@
     "search": "搜索",
     "searchHintText": "請輸入中文或英文的學校名稱",
     "noData": "找不到",
+    "orderByObjectIdAscend": "按序號順序",
+    "orderByObjectIdDescend": "按序號倒序",
+    "orderByNameAscend": "按名稱順序",
+    "orderByNameDescend": "按名稱倒序",
+
     "language": "語言",
     "call": "撥打",
     "open": "打開",

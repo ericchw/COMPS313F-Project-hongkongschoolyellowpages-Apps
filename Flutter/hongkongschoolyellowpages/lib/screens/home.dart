@@ -36,6 +36,52 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  void _orderByObjectIdAscend() async {
+    _schoolInfoList!.sort(
+      (a, b) =>
+          a['attributes']['OBJECTID'].compareTo(b['attributes']['OBJECTID']),
+    );
+    setState(() {});
+  }
+
+  void _orderByObjectIdDescend() async {
+    _schoolInfoList!.sort(
+      (a, b) =>
+          b['attributes']['OBJECTID'].compareTo(a['attributes']['OBJECTID']),
+    );
+    setState(() {});
+  }
+
+  void _orderByNameAscend() async {
+    _isEn
+        ? _schoolInfoList!.sort(
+            (a, b) => b['attributes']['ENGLISH_NAME']
+                .toLowerCase()
+                .compareTo(a['attributes']['ENGLISH_NAME'].toLowerCase()),
+          )
+        : _schoolInfoList!.sort(
+            (a, b) => b['attributes']['中文名稱']
+                .toLowerCase()
+                .compareTo(a['attributes']['中文名稱'].toLowerCase()),
+          );
+    setState(() {});
+  }
+
+  void _orderByNameDescend() async {
+    _isEn
+        ? _schoolInfoList!.sort(
+            (a, b) => a['attributes']['ENGLISH_NAME'].toLowerCase().compareTo(
+                  b['attributes']['ENGLISH_NAME'].toLowerCase(),
+                ),
+          )
+        : _schoolInfoList!.sort(
+            (a, b) => a['attributes']['中文名稱'].toLowerCase().compareTo(
+                  b['attributes']['中文名稱'].toLowerCase(),
+                ),
+          );
+    setState(() {});
+  }
+
   Future<Null> _refresh() async {
     _getLanguage();
     controller = AnimationController(
@@ -195,15 +241,111 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     fontWeight: FontWeight.w500, color: Colors.black),
               ),
               actions: <Widget>[
+                IconButton(
+                  icon: const Icon(
+                    Icons.manage_search,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    //print(_isEn);
+                    Navigator.pushNamed(
+                      context,
+                      "Filter",
+                      arguments: {
+                        'isEn': _isEn,
+                        'schoolList': _schoolInfoList!,
+                      },
+                    );
+                  },
+                ),
+                PopupMenuButton(
+                  icon: const Icon(
+                    Icons.segment_sharp,
+                    color: Colors.black,
+                  ),
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 4,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.arrow_upward,
+                          ),
+                          TextButton(
+                            onPressed: () => {(_orderByObjectIdAscend())},
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .orderByObjectIdAscend,
+                              style: const TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 3,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.arrow_downward,
+                          ),
+                          TextButton(
+                            onPressed: () => {_orderByObjectIdDescend()},
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .orderByObjectIdDescend,
+                              style: const TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 6,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.arrow_downward,
+                          ),
+                          TextButton(
+                            onPressed: () => {_orderByNameDescend()},
+                            child: Text(
+                              AppLocalizations.of(context)!.orderByNameDescend,
+                              style: const TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 5,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.arrow_upward,
+                          ),
+                          TextButton(
+                            onPressed: () => {_orderByNameAscend()},
+                            child: Text(
+                              AppLocalizations.of(context)!.orderByNameAscend,
+                              style: const TextStyle(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 Padding(
-                  padding: EdgeInsets.only(right: 20.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LanguageSettingScreen())).then(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LanguageSettingScreen(),
+                        ),
+                      ).then(
                         (value) {
                           setState(
                             () {
@@ -248,7 +390,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             },
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.search),
-                              hintText: AppLocalizations.of(context)!.search,
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHintText,
                               border: InputBorder.none,
                             ),
                           ),
